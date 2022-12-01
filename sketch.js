@@ -5,11 +5,11 @@ const DIM = 30;
 
 function preload() {
   // Import tile images and create sperate Tile objects
-  tiles[0] = new Tile(loadImage("tiles/demo/blank.png"), [[0], [0], [0], [0]], 0);
-  tiles[1] = new Tile(loadImage("tiles/demo/up.png"), [[1], [1], [0], [1]], 0);
-  tiles[2] = new Tile(loadImage("tiles/demo/up.png"), [[1], [1], [0], [1]], 1);
-  tiles[3] = new Tile(loadImage("tiles/demo/up.png"), [[1], [1], [0], [1]], 2);
-  tiles[4] = new Tile(loadImage("tiles/demo/up.png"), [[1], [1], [0], [1]], 3);
+  tiles[0] = new Tile(loadImage("tiles/demo/blank.png"), [[0], [0], [0], [0]]);
+  tiles[1] = new Tile(loadImage("tiles/demo/three_way.png"), [[1], [1], [0], [1]]);
+  tiles[2] = tiles[1].rotate(1);
+  tiles[3] = tiles[1].rotate(2);
+  tiles[4] = tiles[1].rotate(3);
   tiles[5] = new Tile(loadImage("tiles/demo/full.png"), [[1], [1], [1], [1]], 0);
 }
 

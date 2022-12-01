@@ -8,13 +8,9 @@ function intersection(arr1, arr2) {
 }
 
 class Tile {
-    constructor(img, connectors, rotation) {
+    constructor(img, connectors, rotation=0) {
         this.img = img;
-        this.connectors = [];
-        const len = connectors.length;
-        for (let i = 0; i < len; i++) {
-            this.connectors[i] = connectors[(i-rotation + len) % len];
-        }
+        this.connectors = connectors;
         this.rotation = rotation;
     }
 
@@ -33,5 +29,15 @@ class Tile {
         rotate(HALF_PI * this.rotation);
         image(this.img, 0, 0, w, h);
         pop();
+    }
+
+    rotate(rotation) {
+        const len = this.connectors.length;
+        let rotatedConnectors = [];
+        for (let i = 0; i < len; i++) {
+            rotatedConnectors[i] = this.connectors[(i-rotation + len) % len];
+        }
+        
+        return new Tile(this.img, rotatedConnectors, rotation);
     }
 }
