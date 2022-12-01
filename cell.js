@@ -9,7 +9,7 @@ class Cell {
 
     show(tiles) {
         if (this.collapsed) {
-            image(tiles[this.options[0]].img, this.i*this.w, this.j*this.h, this.w, this.h);
+            tiles[this.options[0]].show(this.i, this.j, this.w, this.h);
         } else {
             stroke(0);
             rect(this.i*this.w, this.j*this.h, this.w, this.h);

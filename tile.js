@@ -8,9 +8,14 @@ function intersection(arr1, arr2) {
 }
 
 class Tile {
-    constructor(img, connectors) {
+    constructor(img, connectors, rotation) {
         this.img = img;
-        this.connectors = connectors;
+        this.connectors = [];
+        const len = connectors.length;
+        for (let i = 0; i < len; i++) {
+            this.connectors[i] = connectors[(i-rotation + len) % len];
+        }
+        this.rotation = rotation;
     }
 
     canConnect(tile, direction) {
@@ -19,5 +24,14 @@ class Tile {
 
         if (intersection(this.connectors[direction], tile.connectors[otherDir]).length > 0) return true;
         return false; 
+    }
+
+    show(i, j, w, h) {
+        push();
+        imageMode(CENTER);
+        translate(i*w + w/2, j*h + h/2);
+        rotate(HALF_PI * this.rotation);
+        image(this.img, 0, 0, w, h);
+        pop();
     }
 }
